@@ -61,7 +61,11 @@
             <PasswordField fx:id="passwordfield" layoutX="228.0" layoutY="203.0" promptText="Password" />
             <Button fx:id="loginbutton" layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginMessage" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0033A0;" text="Login" textFill="#f1f3f1" />
             <Button fx:id="cancelbutton" layoutX="181.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Cancel" textFill="#f1f3f1" />
-            <Label fx:id="loginlabel" layoutX="10.0" layoutY="78.0" prefHeight="17.0" prefWidth="274.0" textFill="#f51c1c" />
+            <Label fx:id="loginlabel" layoutX="108.0" layoutY="68.0" prefHeight="49.0" prefWidth="274.0" textFill="#f51c1c" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
             <Button fx:id="backButton" layoutX="181.0" layoutY="389.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Back" textFill="#f1f3f1" />
          </children>
       </AnchorPane>

@@ -14,11 +14,11 @@ import javafx.scene.control.PasswordField;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import java.sql.Statement;
-
 public class StaffLoginController {
+
     @FXML
     private Label loginlabel;
     @FXML
@@ -28,16 +28,13 @@ public class StaffLoginController {
     @FXML
     private Button cancelbutton;
 
-
     public void loginMessage(ActionEvent e)  {
+        System.out.println("Login button clicked!");
 
         if (!usernametextfield.getText().isBlank() && !passwordfield.getText().isBlank()) {
-            // loginlabel.setText("You try to log in! ");
-
             validateLogin();
-
         } else {
-            loginlabel.setText("Please enter Username and Password ");
+            loginlabel.setText("Please enter Username and Password");
         }
     }
 
@@ -51,40 +48,44 @@ public class StaffLoginController {
         stage.show();
     }
 
-
     public void cancelButtonClick(ActionEvent e) {
         Stage stage = (Stage) cancelbutton.getScene().getWindow();
         stage.close();
-
     }
 
-    public void validateLogin()  {
+    public void validateLogin() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM useraccounts WHERE Username ='" + usernametextfield.getText() + "' AND Password = '" + passwordfield.getText() + "'";
+        String sql = "SELECT Role FROM useraccounts WHERE Username = ? AND Password = ?";
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            PreparedStatement ps = connectDB.prepareStatement(sql);
+            ps.setString(1, usernametextfield.getText());
+            ps.setString(2, passwordfield.getText());
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    loginlabel.setText("welcome ");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("Role");
+
+                // ✔ Admin and Staff both allowed
+                if (role.equalsIgnoreCase("Admin") || role.equalsIgnoreCase("Staff")) {
+
+                    loginlabel.setText("Login Successful!");
+
+                    // TODO: Load staff dashboard here
 
                 } else {
-                    loginlabel.setText("Wrong login Information. Please try again! ");
+                    loginlabel.setText("ACCESS DENIED.");
                 }
+
+            } else {
+                loginlabel.setText("Invalid username or password.");
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
 }
-
-
-

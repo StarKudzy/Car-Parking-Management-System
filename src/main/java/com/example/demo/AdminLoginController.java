@@ -58,33 +58,45 @@ public class AdminLoginController {
 
     }
 
-    public void validateLogin()  {
+    public void validateLogin() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM useraccounts WHERE Username ='" + usernametextfield.getText() + "' AND Password = '" + passwordfield.getText() + "'";
+        String verifyLogin = "SELECT Role FROM useraccounts WHERE Username = ? AND Password = ?";
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            // Use PreparedStatement so ? gets replaced
+            java.sql.PreparedStatement ps = connectDB.prepareStatement(verifyLogin);
+            ps.setString(1, usernametextfield.getText());
+            ps.setString(2, passwordfield.getText());
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    loginlabel.setText("welcome ");
+            ResultSet result = ps.executeQuery();
+
+            if (result.next()) {
+                String role = result.getString("Role");
+
+                if (role.equalsIgnoreCase("Admin")) {
+                    loginlabel.setText("Welcome Admin!");
+
+                    // Load Admin dashboard here if needed
 
                 } else {
-                    loginlabel.setText("Wrong login Information. Please try again! ");
+                    loginlabel.setText("ACCESS DENIED: Staff cannot log in as Admin.");
                 }
+
+            } else {
+                loginlabel.setText("Wrong login information. Please try again!");
             }
 
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
+
+
+}
+
+
 
 
 
