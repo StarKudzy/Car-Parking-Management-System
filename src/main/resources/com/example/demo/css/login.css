@@ -1,0 +1,28 @@
+/* Make text fields look cleaner */
+TextField, PasswordField {
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: #cfcfcf;
+    -fx-padding: 5 8;
+}
+
+/* Small focus effect */
+TextField:focused, PasswordField:focused {
+    -fx-border-color: #008000;
+}
+
+/* Buttons: same color as yours, just smoother edges */
+.button {
+    -fx-background-radius: 6;
+}
+
+.button:hover {
+    -fx-background-color: #009600;
+}
+
+.button:pressed {
+    -fx-background-color: #006600;
+}
+
+
+
