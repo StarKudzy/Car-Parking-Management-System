@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 
 import java.sql.Statement;
 
-public class HelloController {
+public class AdminLogin{
     @FXML
     private Label loginlabel;
     @FXML
