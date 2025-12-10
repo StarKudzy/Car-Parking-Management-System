@@ -18,7 +18,7 @@ public class RoleSelectionController {
 
     @FXML
     private void onAdminClick(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/demo/hello-view.fxml")); // your admin login page
+        root = FXMLLoader.load(getClass().getResource("/com/example/demo/AdminLogin.fxml")); // your admin login page
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
