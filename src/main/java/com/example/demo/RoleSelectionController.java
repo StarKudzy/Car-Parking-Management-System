@@ -27,10 +27,11 @@ public class RoleSelectionController {
 
     @FXML
     private void onStaffClick(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("staff-login.fxml")); // your staff login page
+        root = FXMLLoader.load(getClass().getResource("/com/example/demo/StaffLogin.fxml")); // your staff login page
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.show();
     }
 }

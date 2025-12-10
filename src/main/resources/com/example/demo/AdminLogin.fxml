@@ -39,31 +39,31 @@
          </children>
       </AnchorPane>
    </left>
-   <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="291.0" BorderPane.alignment="CENTER">
+   <right>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="397.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="81.0" layoutY="33.0" prefHeight="35.0" prefWidth="154.0" text="Secure Login">
+            <Label layoutX="189.0" layoutY="33.0" prefHeight="35.0" prefWidth="154.0" text="Secure Login">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="118.0" prefHeight="35.0" prefWidth="117.0" text="Username">
+            <Label layoutX="111.0" layoutY="118.0" prefHeight="35.0" prefWidth="117.0" text="Username">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="17.0" layoutY="198.0" prefHeight="35.0" prefWidth="129.0" text="Password">
+            <Label layoutX="116.0" layoutY="198.0" prefHeight="35.0" prefWidth="129.0" text="Password">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="usernametextfield" layoutX="128.0" layoutY="123.0" promptText="Username" />
-            <PasswordField fx:id="passwordfield" layoutX="128.0" layoutY="203.0" promptText="Password" />
-            <Button fx:id="loginbutton" layoutX="67.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginMessage" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0033A0;" text="Login" textFill="#f1f3f1" />
-            <Button fx:id="cancelbutton" layoutX="68.0" layoutY="341.0" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Cancel" textFill="#f1f3f1" />
+            <TextField fx:id="usernametextfield" layoutX="228.0" layoutY="123.0" promptText="Username" />
+            <PasswordField fx:id="passwordfield" layoutX="228.0" layoutY="203.0" promptText="Password" />
+            <Button fx:id="loginbutton" layoutX="180.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginMessage" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0033A0;" text="Login" textFill="#f1f3f1" />
+            <Button fx:id="cancelbutton" layoutX="181.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Cancel" textFill="#f1f3f1" />
             <Label fx:id="loginlabel" layoutX="10.0" layoutY="78.0" prefHeight="17.0" prefWidth="274.0" textFill="#f51c1c" />
-            <Button fx:id="backButton" layoutX="68.0" layoutY="393.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Back" textFill="#f1f3f1" />
+            <Button fx:id="backButton" layoutX="181.0" layoutY="389.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #0033A0;" text="Back" textFill="#f1f3f1" />
          </children>
       </AnchorPane>
-   </center>
+   </right>
 </BorderPane>

@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 
 import java.sql.Statement;
 
-public class AdminLogin{
+public class AdminLoginController {
     @FXML
     private Label loginlabel;
     @FXML
@@ -47,6 +47,7 @@ public class AdminLogin{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.show();
     }
 

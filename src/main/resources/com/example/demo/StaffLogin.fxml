@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StaffLogin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StaffLoginController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="291.0">
          <children>
@@ -109,6 +109,7 @@
                   <Button fx:id="loginbutton1" layoutX="67.0" layoutY="278.0" mnemonicParsing="false" onAction="#loginMessage" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #008000;" text="Login" textFill="#f1f3f1" />
                   <Button fx:id="cancelbutton1" layoutX="68.0" layoutY="341.0" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #008000;" text="Cancel" textFill="#f1f3f1" />
                   <Label fx:id="loginlabel1" layoutX="10.0" layoutY="78.0" prefHeight="17.0" prefWidth="274.0" textFill="#f51c1c" />
+                  <Button fx:id="backButton" layoutX="68.0" layoutY="398.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #008000;" text="Back" textFill="#f1f3f1" />
                </children>
             </AnchorPane>
          </center>
