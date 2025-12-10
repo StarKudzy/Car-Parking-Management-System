@@ -78,9 +78,14 @@ public class AdminLoginController {
                 if (role.equalsIgnoreCase("Admin")) {
                     loginlabel.setText("Welcome Admin!");
 
-                    // Load Admin dashboard here if needed
-
-                } else {
+                    // Load Admin Main Page
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/demo/AdminMainPage.fxml"));
+                    Stage stage = (Stage) usernametextfield.getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                else {
                     loginlabel.setText("ACCESS DENIED: Staff cannot log in as Admin.");
                 }
 
