@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="497.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ParkingLotStatusController">
+   <children>
+      <AnchorPane prefHeight="505.0" prefWidth="710.0" style="-fx-background-color: #008000;">
+         <children>
+            <Label layoutX="226.0" layoutY="14.0" prefHeight="30.0" prefWidth="215.0" text="Parking Lot status" textFill="#fafafa">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="677.0" layoutX="32.0" layoutY="52.0" startX="-32.0" />
+            <Label layoutX="39.0" layoutY="56.0" prefHeight="52.0" prefWidth="183.0" text="20 Total slots" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="425.0" layoutY="56.0" prefHeight="52.0" prefWidth="183.0" text="5 VIP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="242.0" layoutY="56.0" prefHeight="52.0" prefWidth="183.0" text="15 NORMAL" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="refreshbutton" layoutX="270.0" layoutY="434.0" mnemonicParsing="false" onAction="#onRefreshClick" prefHeight="35.0" prefWidth="128.0" text="refresh" />
+            <Button fx:id="searchbutton" layoutX="70.0" layoutY="434.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" text="search" />
+            <TableView fx:id="tableviewid" layoutX="89.0" layoutY="136.0" prefHeight="280.0" prefWidth="510.0">
+              <columns>
+                <TableColumn fx:id="slotidcolumn" prefWidth="89.5" text="slot_id" />
+                <TableColumn fx:id="slotnumbercolumn" prefWidth="87.0" text="slot_number" />
+                  <TableColumn fx:id="slottypecolumn" prefWidth="76.5" text="slot_type" />
+                  <TableColumn fx:id="statuscolumn" prefWidth="81.5" text="status" />
+                  <TableColumn fx:id="platenumbercolumn" prefWidth="91.0" text="platenumber" />
+                  <TableColumn fx:id="timeincolumn" prefWidth="83.5" text="time_in" />
+              </columns>
+            </TableView>
+            <Button fx:id="backbutton" layoutX="441.0" layoutY="434.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="35.0" prefWidth="128.0" text="back" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
