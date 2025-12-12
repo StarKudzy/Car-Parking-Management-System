@@ -37,7 +37,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="-20.0" layoutY="174.0" prefHeight="105.0" prefWidth="163.0" style="-fx-background-color: #0000FF;">
                      <children>
-                        <Button fx:id="ManageUsersButton" layoutX="27.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Manage Users" />
+                        <Button fx:id="ManageUsersButton" layoutX="27.0" layoutY="40.0" mnemonicParsing="false" onAction="#ManageUsersButtonClick" prefHeight="25.0" prefWidth="109.0" text="Manage Users" />
                      </children>
                   </AnchorPane>
                </children>
