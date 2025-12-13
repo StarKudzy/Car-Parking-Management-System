@@ -67,6 +67,24 @@ public class AdminMainPageController {
         stage.sizeToScene();
         stage.show();
     }
+    @FXML
+    private void onReportClick(javafx.event.ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/com/example/demo/Report.fxml")
+        );
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    @FXML
+    private void onSearchClick(javafx.event.ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/com/example/demo/VehicleSearch.fxml")
+        );
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 
 

@@ -65,7 +65,7 @@ public class AdminLoginController {
         String verifyLogin = "SELECT Role FROM useraccounts WHERE Username = ? AND Password = ?";
 
         try {
-            // Use PreparedStatement so ? gets replaced
+
             java.sql.PreparedStatement ps = connectDB.prepareStatement(verifyLogin);
             ps.setString(1, usernametextfield.getText());
             ps.setString(2, passwordfield.getText());

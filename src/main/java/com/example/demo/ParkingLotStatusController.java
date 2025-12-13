@@ -20,9 +20,7 @@ import java.sql.Statement;
 
 public class ParkingLotStatusController {
 
-    /* =======================
-       TABLE & COLUMNS
-       ======================= */
+
 
     @FXML
     private TableView<ParkingSlot> tableviewid;
@@ -39,9 +37,7 @@ public class ParkingLotStatusController {
     @FXML
     private TableColumn<ParkingSlot, String> statuscolumn;
 
-    /* =======================
-       INITIALIZE
-       ======================= */
+
 
     @FXML
     public void initialize() {
@@ -53,9 +49,7 @@ public class ParkingLotStatusController {
         loadParkingData();
     }
 
-    /* =======================
-       LOAD DATA
-       ======================= */
+
 
     private void loadParkingData() {
 
@@ -85,18 +79,14 @@ public class ParkingLotStatusController {
         }
     }
 
-    /* =======================
-       REFRESH BUTTON
-       ======================= */
+
 
     @FXML
     private void onRefreshClick() {
         loadParkingData();
     }
 
-    /* =======================
-       BACK BUTTON
-       ======================= */
+
 
     @FXML
     private void onBackClick(javafx.event.ActionEvent event) throws IOException {
@@ -108,9 +98,7 @@ public class ParkingLotStatusController {
         stage.show();
     }
 
-    /* =======================
-       GO TO VEHICLE SEARCH
-       ======================= */
+
 
     @FXML
     private void onSearchClick(javafx.event.ActionEvent event) throws IOException {

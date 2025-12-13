@@ -22,7 +22,7 @@ public class RoleSelectionController {
         switchScene(event, "/com/example/demo/StaffLogin.fxml");
     }
 
-    /* ================= CANCEL ================= */
+    //cancel button
     @FXML
     private void onCancel(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource())
@@ -31,7 +31,7 @@ public class RoleSelectionController {
         stage.close();   // clean exit
     }
 
-    /* ================= SCENE SWITCH HELPER ================= */
+
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));

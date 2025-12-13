@@ -3,7 +3,12 @@ package com.example.demo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,23 +19,14 @@ import java.util.List;
 
 public class VehicleSearchController {
 
-    /* =======================
-       SEARCH CONTROLS
-       ======================= */
+   //combobox
     @FXML private ComboBox<String> searchByComboBox;
     @FXML private TextField searchValueTextField;
-
-    /* =======================
-       FILTER COMBOBOXES
-       ======================= */
     @FXML private ComboBox<String> brandComboBox;
     @FXML private ComboBox<String> colourComboBox;
     @FXML private ComboBox<String> vehicleTypeComboBox;
     @FXML private ComboBox<String> slotTypeComboBox;
-
-    /* =======================
-       TABLE
-       ======================= */
+// table view
     @FXML private TableView<VehicleSearchRow> vehicleTable;
     @FXML private TableColumn<VehicleSearchRow, String> platenumbercolumn;
     @FXML private TableColumn<VehicleSearchRow, String> vehicletypecolumn;
@@ -44,9 +40,7 @@ public class VehicleSearchController {
     private final ObservableList<VehicleSearchRow> data =
             FXCollections.observableArrayList();
 
-    /* =======================
-       BASE QUERY
-       ======================= */
+  //database query to join tables
     private static final String BASE_QUERY = """
         SELECT
             v.plate_number,
@@ -63,9 +57,7 @@ public class VehicleSearchController {
         WHERE s.time_out IS NULL
     """;
 
-    /* =======================
-       INITIALIZE
-       ======================= */
+
     @FXML
     public void initialize() {
 
@@ -127,16 +119,14 @@ public class VehicleSearchController {
         loadAllVehicles();
     }
 
-    /* =======================
-       SEARCH BUTTON
-       ======================= */
+    //search button
     @FXML
     private void onSearch() {
 
         StringBuilder sql = new StringBuilder(BASE_QUERY);
         List<Object> params = new ArrayList<>();
 
-        // Search-by logic
+
         if (searchByComboBox.getValue() != null &&
                 !searchValueTextField.getText().isBlank()) {
 
@@ -160,7 +150,7 @@ public class VehicleSearchController {
             }
         }
 
-        // Filters
+
         if (brandComboBox.getValue() != null) {
             sql.append(" AND v.brand = ?");
             params.add(brandComboBox.getValue());
@@ -186,9 +176,7 @@ public class VehicleSearchController {
         executeSearch(sql.toString(), params, true);
     }
 
-    /* =======================
-       REFRESH BUTTON
-       ======================= */
+
     @FXML
     private void onRefresh() {
 
@@ -213,9 +201,7 @@ public class VehicleSearchController {
         loadAllVehicles();
     }
 
-    /* =======================
-       DATABASE
-       ======================= */
+
     private void loadAllVehicles() {
         executeSearch(BASE_QUERY, new ArrayList<>(), false);
     }
@@ -259,14 +245,21 @@ public class VehicleSearchController {
         }
     }
 
-    /* =======================
-       INFO ALERT
-       ======================= */
+
     private void showInfo(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+    @FXML
+    private void onBack(javafx.event.ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/com/example/demo/AdminMainPage.fxml")
+        );
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

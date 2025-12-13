@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 
 public class StaffVehicleManagementController {
 
-    /* ================= INPUTS ================= */
+
     @FXML private TextField plateField;
     @FXML private ComboBox<String> vehicleTypeBox;
     @FXML private ComboBox<String> brandBox;
@@ -28,7 +28,6 @@ public class StaffVehicleManagementController {
     @FXML private ComboBox<String> slotNumberBox;
     @FXML private ComboBox<String> slotTypeBox;
 
-    /* ================= TABLE ================= */
     @FXML private TableView<VehicleSearchRow> vehicleTable;
     @FXML private TableColumn<VehicleSearchRow, String> plateCol;
     @FXML private TableColumn<VehicleSearchRow, String> typeCol;
@@ -41,7 +40,7 @@ public class StaffVehicleManagementController {
 
     private final ObservableList<VehicleSearchRow> data = FXCollections.observableArrayList();
 
-    /* ================= INITIALIZE ================= */
+
     @FXML
     public void initialize() {
 
@@ -74,7 +73,7 @@ public class StaffVehicleManagementController {
         loadTable();
     }
 
-    /* ================= TABLE → FORM ================= */
+
     private void fillFormFromTable() {
         VehicleSearchRow v = vehicleTable.getSelectionModel().getSelectedItem();
         if (v == null) return;
@@ -88,7 +87,7 @@ public class StaffVehicleManagementController {
         slotTypeBox.setValue(v.getSlotType());
     }
 
-    /* ================= ADD ================= */
+
     @FXML
     private void onAdd() {
 
@@ -101,7 +100,7 @@ public class StaffVehicleManagementController {
 
         try (Connection conn = db.getConnection()) {
 
-            // 🔹 Check duplicate plate
+
             PreparedStatement checkStmt =
                     conn.prepareStatement("SELECT 1 FROM vehicles WHERE plate_number=?");
             checkStmt.setString(1, plateField.getText());
@@ -112,7 +111,7 @@ public class StaffVehicleManagementController {
                 return;
             }
 
-            // 🔹 Insert vehicle
+
             PreparedStatement vStmt = conn.prepareStatement(
                     "INSERT INTO vehicles (plate_number, vehicle_type, brand, colour, wheels) VALUES (?,?,?,?,?)",
                     PreparedStatement.RETURN_GENERATED_KEYS
@@ -128,7 +127,7 @@ public class StaffVehicleManagementController {
             keys.next();
             int vehicleId = keys.getInt(1);
 
-            // 🔹 Find slot
+
             PreparedStatement slotStmt = conn.prepareStatement(
                     "SELECT slot_id FROM parking_slots WHERE slot_number=? AND slot_type=? AND status='FREE'"
             );
@@ -143,7 +142,7 @@ public class StaffVehicleManagementController {
 
             int slotId = slotRs.getInt("slot_id");
 
-            // 🔹 Parking session
+
             PreparedStatement psStmt = conn.prepareStatement(
                     "INSERT INTO parking_sessions (vehicle_id, slot_id, time_in) VALUES (?,?,?)"
             );
@@ -163,7 +162,7 @@ public class StaffVehicleManagementController {
         }
     }
 
-    /* ================= UPDATE ================= */
+
     @FXML
     private void onUpdate() {
 
@@ -195,7 +194,7 @@ public class StaffVehicleManagementController {
         }
     }
 
-    /* ================= DELETE ================= */
+
     @FXML
     private void onDelete() {
 
@@ -209,7 +208,7 @@ public class StaffVehicleManagementController {
 
         try (Connection conn = db.getConnection()) {
 
-            // 1️⃣ Get active session + slot
+
             PreparedStatement findStmt = conn.prepareStatement("""
             SELECT s.session_id, s.slot_id
             FROM parking_sessions s
@@ -227,21 +226,21 @@ public class StaffVehicleManagementController {
             int sessionId = rs.getInt("session_id");
             int slotId = rs.getInt("slot_id");
 
-            // 2️⃣ Close parking session
+
             PreparedStatement closeSession = conn.prepareStatement(
                     "UPDATE parking_sessions SET time_out = NOW() WHERE session_id = ?"
             );
             closeSession.setInt(1, sessionId);
             closeSession.executeUpdate();
 
-            // 3️⃣ Free the slot
+
             PreparedStatement freeSlot = conn.prepareStatement(
                     "UPDATE parking_slots SET status = 'FREE' WHERE slot_id = ?"
             );
             freeSlot.setInt(1, slotId);
             freeSlot.executeUpdate();
 
-            // 4️⃣ Refresh UI
+
             onRefresh();
 
             showAlert("Vehicle checked out successfully.");
@@ -253,13 +252,13 @@ public class StaffVehicleManagementController {
     }
 
 
-    /* ================= SEARCH ================= */
+
     @FXML
     private void onSearch() {
         data.removeIf(r -> !r.getPlateNumber().contains(plateField.getText()));
     }
 
-    /* ================= REFRESH ================= */
+
     @FXML
     private void onRefresh() {
         onClear();
@@ -267,7 +266,7 @@ public class StaffVehicleManagementController {
         loadTable();
     }
 
-    /* ================= CLEAR ================= */
+
     @FXML
     private void onClear() {
         plateField.clear();
@@ -279,18 +278,18 @@ public class StaffVehicleManagementController {
         slotTypeBox.setValue(null);
     }
 
-    /* ================= BACK ================= */
+
     @FXML
     private void onBack(javafx.event.ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(
-                getClass().getResource("/com/example/demo/StaffMainPage.fxml")
+                getClass().getResource("/com/example/demo/Stafflogin.fxml")
         );
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    /* ================= LOADERS ================= */
+
     private void loadAvailableSlots() {
         slotNumberBox.getItems().clear();
         DatabaseConnection db = new DatabaseConnection();

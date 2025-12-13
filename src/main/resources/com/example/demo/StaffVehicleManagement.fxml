@@ -50,6 +50,6 @@
         </columns>
       </TableView>
       <ComboBox fx:id="slotNumberBox" layoutX="556.0" layoutY="189.0" prefHeight="17.0" prefWidth="149.0" />
-      <Label layoutX="419.0" layoutY="194.0" text="slot_number" textFill="#fff8f8" />
+      <Label layoutX="419.0" layoutY="194.0" text="Available slots" textFill="#fff8f8" />
    </children>
 </AnchorPane>
