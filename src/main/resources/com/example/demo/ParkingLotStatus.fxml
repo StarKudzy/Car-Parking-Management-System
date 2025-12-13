@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="497.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ParkingLotStatusController">
    <children>
       <AnchorPane prefHeight="505.0" prefWidth="710.0" style="-fx-background-color: #008000;">
@@ -35,15 +34,13 @@
                </font>
             </Label>
             <Button fx:id="refreshbutton" layoutX="270.0" layoutY="434.0" mnemonicParsing="false" onAction="#onRefreshClick" prefHeight="35.0" prefWidth="128.0" text="refresh" />
-            <Button fx:id="searchbutton" layoutX="70.0" layoutY="434.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" text="search" />
-            <TableView fx:id="tableviewid" layoutX="89.0" layoutY="136.0" prefHeight="280.0" prefWidth="510.0">
+            <Button fx:id="searchbutton" layoutX="70.0" layoutY="434.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="35.0" prefWidth="111.0" text="search" />
+            <TableView fx:id="tableviewid" layoutX="89.0" layoutY="136.0" prefHeight="280.0" prefWidth="474.0">
               <columns>
-                <TableColumn fx:id="slotidcolumn" prefWidth="89.5" text="slot_id" />
-                <TableColumn fx:id="slotnumbercolumn" prefWidth="87.0" text="slot_number" />
-                  <TableColumn fx:id="slottypecolumn" prefWidth="76.5" text="slot_type" />
-                  <TableColumn fx:id="statuscolumn" prefWidth="81.5" text="status" />
-                  <TableColumn fx:id="platenumbercolumn" prefWidth="91.0" text="platenumber" />
-                  <TableColumn fx:id="timeincolumn" prefWidth="83.5" text="time_in" />
+                <TableColumn fx:id="slotidcolumn" prefWidth="112.5" text="slot_id" />
+                <TableColumn fx:id="slotnumbercolumn" prefWidth="121.5" text="slot_number" />
+                  <TableColumn fx:id="slottypecolumn" prefWidth="132.5" text="slot_type" />
+                  <TableColumn fx:id="statuscolumn" prefWidth="106.5" text="status" />
               </columns>
             </TableView>
             <Button fx:id="backbutton" layoutX="441.0" layoutY="434.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="35.0" prefWidth="128.0" text="back" />

@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="610.0" prefWidth="863.0" style="-fx-background-color: #008000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StaffVehicleManagementController">
+   <children>
+      <Label layoutX="217.0" prefHeight="44.0" prefWidth="519.0" text="Staff Vehicle Management Page" textAlignment="CENTER" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="832.0" layoutX="57.0" layoutY="44.0" startX="-100.0" />
+      <Label layoutX="42.0" layoutY="70.0" text="plate_number" textFill="#fff8f8" />
+      <Label layoutX="42.0" layoutY="129.0" text="vehicle_type" textFill="#fff8f8" />
+      <Label layoutX="42.0" layoutY="185.0" text="colour" textFill="#fff8f8" />
+      <Label layoutX="420.0" layoutY="70.0" text="wheels" textFill="#fff8f8" />
+      <Label layoutX="420.0" layoutY="129.0" text="slot_type" textFill="#fff8f8" />
+      <Label layoutX="43.0" layoutY="228.0" text="brand" textFill="#fff8f8" />
+      <ComboBox fx:id="colourBox" layoutX="162.0" layoutY="177.0" prefHeight="17.0" prefWidth="149.0" />
+      <ComboBox fx:id="vehicleTypeBox" layoutX="163.0" layoutY="125.0" prefWidth="150.0" />
+      <ComboBox fx:id="slotTypeBox" layoutX="555.0" layoutY="125.0" prefWidth="150.0" />
+      <ComboBox fx:id="brandBox" layoutX="161.0" layoutY="224.0" prefWidth="150.0" />
+      <ComboBox fx:id="wheelsBox" layoutX="555.0" layoutY="66.0" prefWidth="150.0" />
+      <TextField fx:id="plateField" layoutX="164.0" layoutY="66.0" />
+      <Button fx:id="addButton" layoutX="22.0" layoutY="284.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="25.0" prefWidth="73.0" text="Add" />
+      <Button fx:id="updateButton" layoutX="163.0" layoutY="284.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="25.0" prefWidth="73.0" text="Update" />
+      <Button fx:id="deleteButton" layoutX="274.0" layoutY="284.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="25.0" prefWidth="79.0" text="Delete" />
+      <Button fx:id="refreshButton" layoutX="409.0" layoutY="284.0" mnemonicParsing="false" onAction="#onClear" prefHeight="25.0" prefWidth="85.0" text="Refresh" />
+      <Button fx:id="searchButton" layoutX="555.0" layoutY="284.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="25.0" prefWidth="73.0" text="Search" />
+      <Button fx:id="backButton" layoutX="688.0" layoutY="284.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="73.0" text="Back" />
+      <TableView fx:id="vehicleTable" layoutX="19.0" layoutY="356.0" prefHeight="247.0" prefWidth="808.0">
+        <columns>
+          <TableColumn fx:id="plateCol" prefWidth="83.5" text="plate_number" />
+          <TableColumn fx:id="typeCol" prefWidth="99.0" text="vehicle_type" />
+            <TableColumn fx:id="brandCol" minWidth="0.0" prefWidth="77.5" text="Brand" />
+            <TableColumn fx:id="colourCol" minWidth="9.5" prefWidth="84.0" text="Colour" />
+            <TableColumn fx:id="wheelscolumn" text="wheels" />
+            <TableColumn fx:id="slotCol" prefWidth="129.5" text="slot_number" />
+            <TableColumn fx:id="timeCol" minWidth="0.0" prefWidth="163.5" text="Time_in" />
+            <TableColumn fx:id="slotTypeCol" minWidth="0.0" prefWidth="90.5" text="slot_type" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="slotNumberBox" layoutX="556.0" layoutY="189.0" prefHeight="17.0" prefWidth="149.0" />
+      <Label layoutX="419.0" layoutY="194.0" text="slot_number" textFill="#fff8f8" />
+   </children>
 </AnchorPane>

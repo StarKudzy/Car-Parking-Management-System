@@ -47,6 +47,15 @@ public class StaffLoginController {
         stage.sizeToScene();
         stage.show();
     }
+    @FXML
+    private void onLoginClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/demo/StaffVehicleManagement.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
+    }
 
     public void cancelButtonClick(ActionEvent e) {
         Stage stage = (Stage) cancelbutton.getScene().getWindow();

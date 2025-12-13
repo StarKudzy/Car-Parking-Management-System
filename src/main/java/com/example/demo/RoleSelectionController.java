@@ -12,26 +12,36 @@ import java.io.IOException;
 
 public class RoleSelectionController {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private void onAdminClick(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/demo/AdminLogin.fxml")); // your admin login page
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        switchScene(event, "/com/example/demo/AdminLogin.fxml");
     }
 
     @FXML
     private void onStaffClick(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/com/example/demo/StaffLogin.fxml")); // your staff login page
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.sizeToScene();
+        switchScene(event, "/com/example/demo/StaffLogin.fxml");
+    }
+
+    /* ================= CANCEL ================= */
+    @FXML
+    private void onCancel(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+        stage.close();   // clean exit
+    }
+
+    /* ================= SCENE SWITCH HELPER ================= */
+    private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+
+        stage.setScene(new Scene(root));
         stage.show();
     }
 }

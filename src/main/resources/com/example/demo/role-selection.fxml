@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RoleSelectionController">
    <left>
       <AnchorPane prefHeight="437.0" prefWidth="585.0" BorderPane.alignment="CENTER">
@@ -30,6 +29,7 @@
             <Button fx:id="adminbutton" layoutX="58.0" layoutY="150.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #15bf34;" text="Admin" textFill="#fafffb" />
             <Button fx:id="staffbutton" layoutX="337.0" layoutY="150.0" mnemonicParsing="false" onAction="#onStaffClick" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #15bf34;" text="Staff" textFill="#fafffb" />
             <Label layoutX="22.0" layoutY="406.0" prefHeight="17.0" prefWidth="222.0" text="Copyright (c). All Rights Reserved" textFill="#ede7e7" />
+            <Button fx:id="exitButton" layoutX="466.0" layoutY="394.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #15bf34;" text="Exit" textFill="#fafffb" />
          </children>
       </AnchorPane>
    </left>

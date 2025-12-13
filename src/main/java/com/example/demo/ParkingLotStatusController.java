@@ -13,12 +13,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ParkingLotStatusController {
 
-    // TABLE
+    /* =======================
+       TABLE & COLUMNS
+       ======================= */
+
     @FXML
     private TableView<ParkingSlot> tableviewid;
 
@@ -34,11 +39,9 @@ public class ParkingLotStatusController {
     @FXML
     private TableColumn<ParkingSlot, String> statuscolumn;
 
-    @FXML
-    private TableColumn<ParkingSlot, String> platenumbercolumn;
-
-    @FXML
-    private TableColumn<ParkingSlot, LocalDateTime> timeincolumn;
+    /* =======================
+       INITIALIZE
+       ======================= */
 
     @FXML
     public void initialize() {
@@ -46,36 +49,32 @@ public class ParkingLotStatusController {
         slotnumbercolumn.setCellValueFactory(new PropertyValueFactory<>("slotNumber"));
         slottypecolumn.setCellValueFactory(new PropertyValueFactory<>("slotType"));
         statuscolumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-        platenumbercolumn.setCellValueFactory(new PropertyValueFactory<>("plateNumber"));
-        timeincolumn.setCellValueFactory(new PropertyValueFactory<>("timeIn"));
 
         loadParkingData();
     }
 
+    /* =======================
+       LOAD DATA
+       ======================= */
+
     private void loadParkingData() {
+
         ObservableList<ParkingSlot> list = FXCollections.observableArrayList();
-
         DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
 
-        String query = "SELECT * FROM parkinglot_status";
+        String query = "SELECT * FROM parking_slots";
 
-        try (Statement st = connectDB.createStatement();
+        try (Connection connectDB = connectNow.getConnection();
+             Statement st = connectDB.createStatement();
              ResultSet rs = st.executeQuery(query)) {
 
             while (rs.next()) {
-                Timestamp ts = rs.getTimestamp("time_in");
-                LocalDateTime timeIn = (ts != null) ? ts.toLocalDateTime() : null;
-
                 ParkingSlot slot = new ParkingSlot(
                         rs.getInt("slot_id"),
                         rs.getString("slot_number"),
                         rs.getString("slot_type"),
-                        rs.getString("status"),
-                        rs.getString("plate_number"),
-                        timeIn
+                        rs.getString("status")
                 );
-
                 list.add(slot);
             }
 
@@ -86,17 +85,38 @@ public class ParkingLotStatusController {
         }
     }
 
-    // REFRESH BUTTON
+    /* =======================
+       REFRESH BUTTON
+       ======================= */
+
     @FXML
     private void onRefreshClick() {
         loadParkingData();
     }
 
-    // BACK BUTTON
+    /* =======================
+       BACK BUTTON
+       ======================= */
+
     @FXML
     private void onBackClick(javafx.event.ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(
-                getClass().getResource("/com/example/demo/AdminMainPage.fxml"));
+                getClass().getResource("/com/example/demo/AdminMainPage.fxml")
+        );
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    /* =======================
+       GO TO VEHICLE SEARCH
+       ======================= */
+
+    @FXML
+    private void onSearchClick(javafx.event.ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/com/example/demo/VehicleSearch.fxml")
+        );
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
