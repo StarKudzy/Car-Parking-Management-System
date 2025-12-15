@@ -49,6 +49,8 @@ public class RoleSelectionController {
 
 
 The image below shows the User role Page.
+
+
 ![img.png](img.png)
 
 
@@ -58,6 +60,7 @@ The image below shows the User role Page.
 ## Staff login Logic
 - Allows user to access the system provided they have entered credentials similar to the ones in the database.
 
+````java
 public void validateLogin() {
 DatabaseConnection connectNow = new DatabaseConnection();
 Connection connectDB = connectNow.getConnection();
@@ -93,20 +96,28 @@ Connection connectDB = connectNow.getConnection();
             e.printStackTrace();
         }
     }
+````
 
+    
+
+    
 Below is the user accounts database with login details for both Admins and Staff. Both Admins and Staff members are allowed to access the Staff Login Page with their login details.
 
 
 ![img_2.png](img_2.png)
 
+
 Below is the Staff Loin Page:
 
 
 ![img_1.png](img_1.png)
+
+
 Staff members enter their credentials to access the system. Upon successful authentication, they are redirected to the Staff Vehicle management Page.
 
-- Page switch Logic
+## Page switch Logic
 
+````java
 @FXML
 private void onLoginClick(ActionEvent event) throws IOException {
 Parent root = FXMLLoader.load(getClass().getResource("/com/example/demo/StaffVehicleManagement.fxml"));
@@ -117,7 +128,7 @@ stage.sizeToScene();
 stage.show();
 }
 
-
+````
 
 Staff Vehicle management Page
 Admin Login Page
