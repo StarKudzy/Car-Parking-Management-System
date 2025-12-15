@@ -392,7 +392,7 @@ private void executeSearch(String sql, List<Object> params, boolean showAlert) {
 
 ![img_10.png](img_10.png)
 
-## Database integration
+## 9. Database integration
 Ensure persistent storage and consistency of parking data.
 
 - Tables include
