@@ -158,9 +158,9 @@ stage.show();
         slotTypeBox.setItems(FXCollections.observableArrayList("VIP","NORMAL"));
 ````
 - ADD Button Logic: 
- - Registers new vehicle
- - Assigns parking slot
- - Prevents deplicate plate numbers
+  - Registers new vehicle
+  - Assigns parking slot
+  - Prevents deplicate plate numbers
 
 ````java
  PreparedStatement vStmt = conn.prepareStatement(
@@ -176,8 +176,8 @@ stage.show();
 
 ````
 - UPDATE Button Logic:
- - Staff can click a record to autofill form fields
- - Modify only selected fields, there is no need to re-enter everything
+  - Staff can click a record to autofill form fields
+  - Modify only selected fields, there is no need to re-enter everything
 
 ````java
 DatabaseConnection db = new DatabaseConnection();
@@ -203,7 +203,7 @@ DatabaseConnection db = new DatabaseConnection();
     }
 ````
 - DELETE Button Logic:
-Deletes(checkout) a selected record in the database and on the tableview as well and updates the slots in the table .
+  - Deletes(checkout) a selected record in the database and on the tableview as well and updates the slots in the table .
 
 ```java
  DatabaseConnection db = new DatabaseConnection();
@@ -245,7 +245,7 @@ PreparedStatement freeSlot = conn.prepareStatement(
 ````
 
 - REFRESH Button 
- - Reloads table and available slots
+  - Reloads table and available slots
 
 - Table displays
 
