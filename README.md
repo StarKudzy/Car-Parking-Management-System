@@ -23,18 +23,44 @@ Below is a step-by-step explanation of each page in the system.
 1. Role Selection Page:
 Allows the user to choose whether they are logging in as ADMIN or STAFF.
 
+##role based logic
+This page acts as the entry point to the system. Based on the selected role, the user is directed to the appropriate login page. This ensures role separation from the start of the application.The cancel button exits the system.
+
+@FXML
+private void onAdminClick(ActionEvent event) throws IOException {
+switchScene(event, "/com/example/demo/AdminLogin.fxml");
+}
+
+    @FXML
+    private void onStaffClick(ActionEvent event) throws IOException {
+        switchScene(event, "/com/example/demo/StaffLogin.fxml");
+    }
+
+    //cancel button
+    @FXML
+    private void onCancel(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+        stage.close();   // clean exit
+    }
+
+The image below shows the User role Page.
 ![img.png](img.png)
 
 
-
 2. Staff Login Page
-3. Staff Vehicle management Page
-4. Admin Login Page
-5. Admin MAIN Page
-6. Parking Lot Status Page
-7. Vehicle Search Page
-8. Manage Users Page
-9. Reports Page
+Authenticates staff members before granting access to parking management features.
+![img_1.png](img_1.png)
+Staff members enter their credentials to access the system. Upon successful authentication, they are redirected to the Staff Vehicle management Page.
+
+Staff Vehicle management Page
+Admin Login Page
+Admin MAIN Page
+Parking Lot Status Page
+Vehicle Search Page
+Manage Users Page
+Reports Page
 
 
 
