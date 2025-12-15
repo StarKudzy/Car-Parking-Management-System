@@ -254,23 +254,30 @@ PreparedStatement freeSlot = conn.prepareStatement(
 
 
 ## 4. Admin Login Page
+User enters their login credentials and are directed to the Admin Main page.Only allows Admins to enter not Staff.
+
 
 ![img_4.png](img_4.png)
 
 
 
-Same as Staff Login page logic, User enters their login credentials and are directed to the Admin Main page.
 
 ## 5. Admin Main Page
-The ADMIN user can now select from the options given depending on their agenda. the user can view the Parking lot status, Manage Users, Search information on registered vehicles and also generate a report.
-
+Allows Admin navigation to vehicle Search, Parking Lot Status, Reports and user management.
 
 ![img_6.png](img_6.png)
 
 
 
-Admin MAIN Page
-Parking Lot Status Page
+
+## 5. Parking Lot Status Page
+Provides a visual overview of parking slot occupancy, displaying available slots and occupied slots.
+
+![Screenshot 2025-12-15 131247.png](../../../Pictures/Screenshots/Screenshot%202025-12-15%20131247.png)
+
+
+
+
 Vehicle Search Page
 Manage Users Page
 Reports Page
