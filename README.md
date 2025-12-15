@@ -377,11 +377,37 @@ private void executeSearch(String sql, List<Object> params, boolean showAlert) {
     }
 ````
 
-Manage Users Page
+## 7. Manage Users Page
+- Admin can edit information about staff, their login details and other Amin details as well
+
 ![img_9.png](img_9.png)
-Reports Page
+
+
+## 8. Reports Page
+- Report types
+   - daily
+   - weekly
+   - yearly
+
+
 ![img_10.png](img_10.png)
 
+## Database integration
+Ensure persistent storage and consistency of parking data.
 
+- Tables include
+   - Vehicles
+   - Parking slots
+   - Parking Sessions
+   - Users
 
+## 10. Error Handling & Validation
+Improves reliability and user experience.
+
+Alerts for:
+- Duplicate vehicle entries
+- Missing required fields
+- Invalid operations
+- Prevents system crashes due to null or invalid input
+- Ensures data integrity
 
