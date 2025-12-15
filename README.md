@@ -311,7 +311,7 @@ private void loadParkingData() {
 ````
 
 - Search Button Logic
-Allows Multi criteria search and navigates to Search Page.
+Allows Multi criteria search and navigates to Vehicle Search Page.
 
 ````java
   @FXML
@@ -333,6 +333,49 @@ Allows Multi criteria search and navigates to Search Page.
 Allows searching of active parked vehicles using flexible criteria.
 
 ![img_8.png](img_8.png)
+
+- Vehicle Search Logic
+
+````java
+private void executeSearch(String sql, List<Object> params, boolean showAlert) {
+
+        data.clear();
+        boolean found = false;
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+
+        try (Connection conn = connectNow.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                found = true;
+                data.add(new VehicleSearchRow(
+                        rs.getString("plate_number"),
+                        rs.getString("vehicle_type"),
+                        rs.getString("brand"),
+                        rs.getString("colour"),
+                        rs.getInt("wheels"),
+                        rs.getString("slot_number"),
+                        rs.getString("slot_type"),
+                        rs.getTimestamp("time_in").toString()
+                ));
+            }
+
+            if (!found && showAlert) {
+                showInfo("No vehicles match the selected criteria.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+````
 
 Manage Users Page
 ![img_9.png](img_9.png)
