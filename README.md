@@ -157,8 +157,10 @@ stage.show();
         wheelsBox.setItems(FXCollections.observableArrayList(2,4,6));
         slotTypeBox.setItems(FXCollections.observableArrayList("VIP","NORMAL"));
 ````
-- ADD Button Logic
-Add information about the vehicle in the database.
+- ADD Button Logic: 
+ - Registers new vehicle
+ - Assigns parking slot
+ - Prevents deplicate plate numbers
 
 ````java
  PreparedStatement vStmt = conn.prepareStatement(
@@ -173,8 +175,9 @@ Add information about the vehicle in the database.
             vStmt.executeUpdate();
 
 ````
-- UPDATE Button Logic
-Updated information in the database when a table row is selected.
+- UPDATE Button Logic:
+ - Staff can click a record to autofill form fields
+ - Modify only selected fields, there is no need to re-enter everything
 
 ````java
 DatabaseConnection db = new DatabaseConnection();
@@ -199,8 +202,62 @@ DatabaseConnection db = new DatabaseConnection();
         }
     }
 ````
+- DELETE Button Logic:
+Deletes(checkout) a selected record in the database and on the tableview as well and updates the slots in the table .
 
-Admin Login Page
+```java
+ DatabaseConnection db = new DatabaseConnection();
+
+        try (Connection conn = db.getConnection()) {
+
+
+PreparedStatement findStmt = conn.prepareStatement("""
+            SELECT s.session_id, s.slot_id
+            FROM parking_sessions s
+            JOIN vehicles v ON s.vehicle_id = v.vehicle_id
+            WHERE v.plate_number = ? AND s.time_out IS NULL
+        """);
+            findStmt.setString(1, v.getPlateNumber());
+
+ResultSet rs = findStmt.executeQuery();
+            if (!rs.next()) {
+showAlert("Active parking session not found.");
+                return;
+                        }
+
+int sessionId = rs.getInt("session_id");
+int slotId = rs.getInt("slot_id");
+
+
+PreparedStatement closeSession = conn.prepareStatement(
+        "UPDATE parking_sessions SET time_out = NOW() WHERE session_id = ?"
+);
+            closeSession.setInt(1, sessionId);
+            closeSession.executeUpdate();
+
+
+PreparedStatement freeSlot = conn.prepareStatement(
+        "UPDATE parking_slots SET status = 'FREE' WHERE slot_id = ?"
+);
+            freeSlot.setInt(1, slotId);
+            freeSlot.executeUpdate();
+            
+````
+
+- REFRESH Button 
+ - Reloads table and available slots
+
+- Table displays
+
+
+![img_5.png](img_5.png)
+
+
+## 4. Admin Login Page
+
+![img_4.png](img_4.png)
+
+
 Admin MAIN Page
 Parking Lot Status Page
 Vehicle Search Page
