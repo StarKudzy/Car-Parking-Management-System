@@ -11,16 +11,30 @@ User Roles Overview
   - Assign parking slots
   - Update Vehicle Information
   - Checkout Vehicles 
-- Admin
-  -Search vehicles
-  -View parking status
-  -edit information about staff and admin
+- Admin 
+  - Search vehicles
+  - View parking status
+  - edit information about staff and admin
   - Generate daily, weekly, and yearly reports
 
 Application Pages and Workflow
 Below is a step-by-step explanation of each page in the system.
 
-Role Selection Page:
+1. Role Selection Page:
+Allows the user to choose whether they are logging in as ADMIN or STAFF.
+
+![img.png](img.png)
+
+
+
+2. Staff Login Page
+3. Staff Vehicle management Page
+4. Admin Login Page
+5. Admin MAIN Page
+6. Parking Lot Status Page
+7. Vehicle Search Page
+8. Manage Users Page
+9. Reports Page
 
 
 
