@@ -26,6 +26,7 @@ Allows the user to choose whether they are logging in as ADMIN or STAFF.
 ## Role based logic
 - This page acts as the entry point to the system. Based on the selected role, the user is directed to the appropriate login page. This ensures role separation from the start of the application.The cancel button exits the system.
 
+````java
 public class RoleSelectionController {
 
     @FXML
@@ -47,7 +48,7 @@ public class RoleSelectionController {
         stage.close();   // clean exit
     }
 
-
+````
 The image below shows the User role Page.
 
 
@@ -130,7 +131,49 @@ stage.show();
 
 ````
 
-Staff Vehicle management Page
+## 3. Staff Vehicle management Page
+- This is the main operational page where staff manage vehicle parking.
+
+- Below is the staff vehicle management page
+
+![img_3.png](img_3.png)
+
+## Logic about vehicle information
+- The system uses comboboxes to allow user to easily choose within the given criteria.
+
+````java
+ @FXML
+    public void initialize() {
+
+        vehicleTypeBox.setItems(FXCollections.observableArrayList("Car","Bus","Bike","Truck"));
+        brandBox.setItems(FXCollections.observableArrayList(
+                "BMW","Mercedes","Audi","Toyota","Volkswagen",
+                "Honda","Ford","Hyundai","Kia","Nissan"
+        ));
+        colourBox.setItems(FXCollections.observableArrayList(
+                "Black","White","Silver","Grey","Blue",
+                "Red","Green","Brown","Yellow","Orange"
+        ));
+        wheelsBox.setItems(FXCollections.observableArrayList(2,4,6));
+        slotTypeBox.setItems(FXCollections.observableArrayList("VIP","NORMAL"));
+````
+- ADD Button Logic
+
+````java
+ PreparedStatement vStmt = conn.prepareStatement(
+                    "INSERT INTO vehicles (plate_number, vehicle_type, brand, colour, wheels) VALUES (?,?,?,?,?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS
+            );
+            vStmt.setString(1, plateField.getText());
+            vStmt.setString(2, vehicleTypeBox.getValue());
+            vStmt.setString(3, brandBox.getValue());
+            vStmt.setString(4, colourBox.getValue());
+            vStmt.setInt(5, wheelsBox.getValue());
+            vStmt.executeUpdate();
+
+````
+
+
 Admin Login Page
 Admin MAIN Page
 Parking Lot Status Page
