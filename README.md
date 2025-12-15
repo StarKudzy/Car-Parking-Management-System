@@ -273,14 +273,71 @@ Allows Admin navigation to vehicle Search, Parking Lot Status, Reports and user 
 ## 5. Parking Lot Status Page
 Provides a visual overview of parking slot occupancy, displaying available slots and occupied slots.
 
-![Screenshot 2025-12-15 131247.png](../../../Pictures/Screenshots/Screenshot%202025-12-15%20131247.png)
+
+![img_7.png](img_7.png)
+
+
+-  Parking slot Logic: loads all data from the database on registered vehicles and displays it on the tableview.
+
+````java
+private void loadParkingData() {
+
+        ObservableList<ParkingSlot> list = FXCollections.observableArrayList();
+        DatabaseConnection connectNow = new DatabaseConnection();
+
+        String query = "SELECT * FROM parking_slots";
+
+        try (Connection connectDB = connectNow.getConnection();
+             Statement st = connectDB.createStatement();
+             ResultSet rs = st.executeQuery(query)) {
+
+            while (rs.next()) {
+                ParkingSlot slot = new ParkingSlot(
+                        rs.getInt("slot_id"),
+                        rs.getString("slot_number"),
+                        rs.getString("slot_type"),
+                        rs.getString("status")
+                );
+                list.add(slot);
+            }
+
+            tableviewid.setItems(list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+````
+
+- Search Button Logic
+Allows Multi criteria search and navigates to Search Page.
+
+````java
+  @FXML
+    private void onSearchClick(javafx.event.ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(
+                getClass().getResource("/com/example/demo/VehicleSearch.fxml")
+        );
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+}
+````
 
 
 
 
-Vehicle Search Page
+## 6. Vehicle Search Page
+Allows searching of active parked vehicles using flexible criteria.
+
+![img_8.png](img_8.png)
+
 Manage Users Page
+![img_9.png](img_9.png)
 Reports Page
+![img_10.png](img_10.png)
 
 
 
