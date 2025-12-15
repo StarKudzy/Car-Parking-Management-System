@@ -258,6 +258,17 @@ PreparedStatement freeSlot = conn.prepareStatement(
 ![img_4.png](img_4.png)
 
 
+
+Same as Staff Login page logic, User enters their login credentials and are directed to the Admin Main page.
+
+## 5. Admin Main Page
+The ADMIN user can now select from the options given depending on their agenda. the user can view the Parking lot status, Manage Users, Search information on registered vehicles and also generate a report.
+
+
+![img_6.png](img_6.png)
+
+
+
 Admin MAIN Page
 Parking Lot Status Page
 Vehicle Search Page
