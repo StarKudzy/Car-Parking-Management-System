@@ -158,6 +158,7 @@ stage.show();
         slotTypeBox.setItems(FXCollections.observableArrayList("VIP","NORMAL"));
 ````
 - ADD Button Logic
+Add information about the vehicle in the database.
 
 ````java
  PreparedStatement vStmt = conn.prepareStatement(
@@ -172,7 +173,32 @@ stage.show();
             vStmt.executeUpdate();
 
 ````
+- UPDATE Button Logic
+Updated information in the database when a table row is selected.
 
+````java
+DatabaseConnection db = new DatabaseConnection();
+
+        try (Connection conn = db.getConnection()) {
+
+            PreparedStatement stmt = conn.prepareStatement(
+                    "UPDATE vehicles SET vehicle_type=?, brand=?, colour=?, wheels=? WHERE plate_number=?"
+            );
+            stmt.setString(1, vehicleTypeBox.getValue());
+            stmt.setString(2, brandBox.getValue());
+            stmt.setString(3, colourBox.getValue());
+            stmt.setInt(4, wheelsBox.getValue());
+            stmt.setString(5, v.getPlateNumber());
+
+            stmt.executeUpdate();
+
+            onRefresh();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+````
 
 Admin Login Page
 Admin MAIN Page
