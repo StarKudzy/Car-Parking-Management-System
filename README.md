@@ -55,6 +55,18 @@ The image below shows the User role Page.
 ![img.png](img.png)
 
 
+## Login Credentials (For Testing)
+
+### Admin Login
+Username: admin1  
+Password: Admin123
+
+### Staff Login
+Username: staff1  
+Password: Staff123
+
+
+
 ## 2. Staff Login Page
 - Authenticates staff members before granting access to parking management features.
 
